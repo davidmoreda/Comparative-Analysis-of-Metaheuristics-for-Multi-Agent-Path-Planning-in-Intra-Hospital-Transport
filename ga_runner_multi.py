@@ -310,7 +310,7 @@ def run_ga_multi(
 if __name__ == "__main__":
     run_ga_multi(
         pop_size=80,
-        ngen=200, 
+        ngen=500, 
         cxpb=0.6,
         mutpb=0.3,
         seed=42,
@@ -318,7 +318,7 @@ if __name__ == "__main__":
         show_anim=True,
         save_anim=False,
         anim_file="routes_animation_ga_multi_100_1000_06_04_s42.mp4",
-        debug_interval=50
+        debug_interval=50 # solo al final
     )
 
 """

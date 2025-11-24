@@ -321,7 +321,7 @@ if __name__ == "__main__":
         pop_size=100,
         ngen=400,
         cxpb=0.7,
-        mutpb=0.3,
+        mutpb=0.2,
         seed=42,
         show_plots=True,
         show_anim=True,
