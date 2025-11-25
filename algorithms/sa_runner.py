@@ -8,7 +8,7 @@ import matplotlib.animation as animation
 from matplotlib.animation import FFMpegWriter
 from tqdm import tqdm
 
-from ga_core import (
+from algorithms.ga_core import (
     prepare_environment,
     create_graph,
     build_route,
@@ -232,8 +232,8 @@ def run_sa(
     start_temp=10.0,
     end_temp=0.1,
     seed=42,
-    show_plots=True,
-    show_anim=True,
+    show_plots=False,
+    show_anim=False,
     save_anim=False,
     anim_file="routes_animation_sa.mp4",
     debug_interval=500
@@ -383,9 +383,25 @@ if __name__ == "__main__":
         start_temp=5.0,
         end_temp=0.01,
         seed=42,
-        show_plots=True,
-        show_anim=True,
+        show_plots=False,
+        show_anim=False,
         save_anim=False,
         anim_file="routes_animation_sa_15000_10_001_42.mp4",
         debug_interval=500
     )
+
+"""
+Top 3 mejores configuraciones:
+
+Params: {'n_iter': 12000, 'start_temp': 5, 'end_temp': 0.01}
+Score: 2170.2597637085464
+Time: 58.89351360003153
+
+Params: {'n_iter': 5000, 'start_temp': 20, 'end_temp': 0.01}
+Score: 2275.522967144143
+Time: 23.348228295644123
+
+Params: {'n_iter': 8000, 'start_temp': 10, 'end_temp': 0.01}
+Score: 2294.497834896004
+Time: 36.90306027730306
+"""

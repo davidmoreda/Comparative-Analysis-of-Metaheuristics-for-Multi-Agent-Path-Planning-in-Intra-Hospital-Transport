@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import math
 
-from ga_core import (
+from algorithms.ga_core import (
     prepare_environment,
     ga_setup,
     detect_conflicts
@@ -309,25 +309,52 @@ def run_ga_multi(
 
 if __name__ == "__main__":
     run_ga_multi(
-        pop_size=80,
-        ngen=500, 
+        pop_size=120,
+        ngen=1000, 
         cxpb=0.6,
-        mutpb=0.3,
+        mutpb=0.2,
         seed=42,
         show_plots=True,
         show_anim=True,
-        save_anim=False,
-        anim_file="routes_animation_ga_multi_100_1000_06_04_s42.mp4",
+        save_anim=True,
+        anim_file="routes_animation_ga_multi_120_1000_06_02_s42.mp4",
         debug_interval=50 # solo al final
     )
 
 """
 
-==============================
-        RESULTADOS
-==============================
-Mejores hiperparámetros: {'pop_size': 193, 'ngen': 861, 'cxpb': 0.8590682037624086, 'mutpb': 0.2859937650070929}
-Mejor valor (neg-HV): -13744945.923745966
-Hypervolume estimado: 13744945.923745966
+===== TOP CONFIGURACIONES POR HV =====
+pop=120, ngen=1000, cxpb=0.8, mutpb=0.3
+  HV medio = 15225585.80
+  Tiempo medio = 242.05s
+  Runs = 3
+
+pop=120, ngen=800, cxpb=0.8, mutpb=0.3
+  HV medio = 15205734.70
+  Tiempo medio = 193.62s
+  Runs = 3
+
+pop=100, ngen=1000, cxpb=0.8, mutpb=0.2
+  HV medio = 15184738.11
+  Tiempo medio = 245.08s
+  Runs = 3
+
+pop=120, ngen=1000, cxpb=0.6, mutpb=0.3
+  HV medio = 15161459.41
+  Tiempo medio = 293.68s
+  Runs = 3
+
+pop=120, ngen=800, cxpb=0.6, mutpb=0.3
+  HV medio = 15155115.40
+  Tiempo medio = 241.37s
+  Runs = 3
+
+
+===== MEJOR RUN INDIVIDUAL =====
+run_id=410
+pop=120, ngen=1000, cxpb=0.6, mutpb=0.2, seed=2
+HV=15446233.94, clean=1077.32, penal=1093.87
+conflicts=0, mindist=6.08, feasible=1
+time=198.72s
 
 """

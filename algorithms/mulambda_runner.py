@@ -9,7 +9,7 @@ from matplotlib.animation import FFMpegWriter
 from tqdm import tqdm
 import math
 
-from ga_core import (
+from algorithms.ga_core import (
     prepare_environment,
     ga_setup,
     detect_conflicts,

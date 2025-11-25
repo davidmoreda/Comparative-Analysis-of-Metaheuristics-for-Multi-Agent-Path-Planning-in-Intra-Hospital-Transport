@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import os
 from datetime import datetime
 
-from ga_runner import run_ga
-from ga_runner_multi import run_ga_multi
-from mulambda_runner import run_mulambda
-from sa_runner import run_sa
+from algorithms.ga_runner import run_ga
+from algorithms.ga_runner_multi import run_ga_multi
+from algorithms.mulambda_runner import run_mulambda
+from algorithms.sa_runner import run_sa
 
 
 # ============================================================
@@ -163,7 +163,6 @@ def plot_resumen_barras(results):
     plt.tight_layout()
     plt.savefig("results/bar_tiempos.svg", format="svg")
     print("Guardado: results/bar_tiempos.svg")
-
 
 # ============================================================
 #       MAIN

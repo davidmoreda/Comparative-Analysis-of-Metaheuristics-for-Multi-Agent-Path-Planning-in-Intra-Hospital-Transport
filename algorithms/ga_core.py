@@ -464,7 +464,7 @@ def prepare_environment(show_grid=False):
     Carga el environment desde el BMP completo, genera starts/picks/drops
     y opcionalmente los visualiza sobre el mapa con simbología por agente.
     """
-    env = load_env_from_bmp("data/Mapa.bmp")
+    env = load_env_from_bmp("/home/dmore/code/Optimizacion/GA-hospital/GA-Based-Multi-Agent-Optimal-Path-Planning-for-Intra-Hospital-Transport/data/Mapa.bmp")
 
     H, W = env.shape
     print(f"[INFO] Environment cargado: {H} x {W}")
