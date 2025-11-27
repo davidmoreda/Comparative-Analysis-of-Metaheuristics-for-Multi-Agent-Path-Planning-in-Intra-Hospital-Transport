@@ -181,8 +181,8 @@ def run_mulambda(
     cxpb=0.7,
     mutpb=0.3,
     seed=0,
-    show_plots=True,
-    show_anim=True,
+    show_plots=False,
+    show_anim=False,
     save_anim=False,
     anim_file="routes_animation_mulambda.mp4",
     debug_interval=50
@@ -311,6 +311,22 @@ if __name__ == "__main__":
         seed=42,
         show_plots=True,
         show_anim=True,
-        save_anim=False,
+        save_anim=False, 
         debug_interval=20
     )
+
+    """
+    Top 3 mejores configuraciones:
+
+Params: {'mu': 120, 'lambda_': 120, 'ngen': 800, 'cxpb': 0.5, 'mutpb': 0.5}
+Score: 1221.6603409845823
+Time: 307.0482934315999
+
+Params: {'mu': 120, 'lambda_': 120, 'ngen': 600, 'cxpb': 0.5, 'mutpb': 0.5}
+Score: 1224.269816692831
+Time: 294.4437708059947
+
+Params: {'mu': 120, 'lambda_': 50, 'ngen': 800, 'cxpb': 0.5, 'mutpb': 0.5}
+Score: 1226.8957907132838
+Time: 194.4581925868988
+    """

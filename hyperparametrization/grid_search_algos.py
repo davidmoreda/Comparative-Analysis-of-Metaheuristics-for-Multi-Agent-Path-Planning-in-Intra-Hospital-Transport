@@ -211,8 +211,8 @@ if __name__ == "__main__":
     SEEDS = [0, 1, 2]
     N_JOBS = 8
 
-    algo = "sa"       # "ga", "mulambda", "sa"
-    param_grid = grid_sa
+    algo = "mulambda"       # "ga", "mulambda", "sa"
+    param_grid = grid_mulambda
 
     results = grid_search(algo, param_grid, SEEDS, DB_PATH, N_JOBS)
 

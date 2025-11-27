@@ -184,8 +184,8 @@ def run_ga(
     cxpb=0.8,
     mutpb=0.2,
     seed=0,
-    show_plots=True,
-    show_anim=True,
+    show_plots=False,
+    show_anim=False,
     save_anim=False,
     anim_file="routes_animation.mp4",
     debug_interval=20,
@@ -330,3 +330,18 @@ if __name__ == "__main__":
         debug_interval=50,
         metric="penalized"
     )
+"""
+Top 3 mejores configuraciones:
+
+Params: {'pop_size': 120, 'ngen': 800, 'cxpb': 0.5, 'mutpb': 0.3}
+Score: 1225.0742178380299
+Time: 333.2616793314616
+
+Params: {'pop_size': 120, 'ngen': 600, 'cxpb': 0.5, 'mutpb': 0.3}
+Score: 1228.9693116294427
+Time: 249.944770971934
+
+Params: {'pop_size': 150, 'ngen': 800, 'cxpb': 0.8, 'mutpb': 0.3}
+Score: 1231.7622890254877
+Time: 266.8051021893819
+"""
