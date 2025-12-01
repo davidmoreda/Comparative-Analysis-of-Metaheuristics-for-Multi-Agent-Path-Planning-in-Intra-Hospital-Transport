@@ -110,7 +110,7 @@ def plot_routes_three(env, starts, picks, drops,
 # ==========================================================
 # IMPORTAMOS TUS FUNCIONES DEL RUNNER NORMAL
 # ==========================================================
-from ga_runner import visualize_routes_timed, FFMpegWriterWithProgress
+from .ga_runner import visualize_routes_timed, FFMpegWriterWithProgress
 
 
 # ==========================================================
@@ -358,3 +358,56 @@ conflicts=0, mindist=6.08, feasible=1
 time=198.72s
 
 """
+
+
+# ==========================================================
+# RUNNER LIGERO PARA STREAMLIT
+# ==========================================================
+def run_ga_multi_streamlit(env, starts, picks, drops,
+                           pop_size=120, ngen=50,
+                           cxpb=0.6, mutpb=0.3, seed=0):
+    """
+    Versión ligera del GA para Streamlit.
+    No muestra plots, no hace animación.
+    Devuelve SOLO rutas en píxeles [(y,x),...].
+    """
+
+    random.seed(seed)
+    np.random.seed(seed)
+
+    # setup multiobjetivo
+    tb, base_routes = ga_setup(env, starts, picks, drops, multi=True)
+
+    # crear población inicial
+    pop = tb.population(n=pop_size)
+
+    # evaluar iniciales
+    invalid = [ind for ind in pop if not ind.fitness.valid]
+    fits = list(map(tb.evaluate, invalid))
+    for ind, f in zip(invalid, fits):
+        ind.fitness.values = f
+
+    # NSGA-II inicial
+    pop = tools.selNSGA2(pop, pop_size)
+
+    # evolución principal
+    for gen in range(1, ngen + 1):
+        offspring = algorithms.varAnd(pop, tb, cxpb=cxpb, mutpb=mutpb)
+
+        invalid = [ind for ind in offspring if not ind.fitness.valid]
+        fits = list(map(tb.evaluate, invalid))
+        for ind, f in zip(invalid, fits):
+            ind.fitness.values = f
+
+        pop = tools.selNSGA2(pop + offspring, pop_size)
+
+    # elegir mejor solución por compromiso penal+clean
+    best = min(pop, key=lambda ind: ind.fitness.values[0] + ind.fitness.values[1])
+
+    # convertir nodos → píxeles
+    out_paths = []
+    for r in best:
+        path = [(int(p[0]), int(p[1])) for p in r]
+        out_paths.append(path)
+
+    return {"paths": out_paths}

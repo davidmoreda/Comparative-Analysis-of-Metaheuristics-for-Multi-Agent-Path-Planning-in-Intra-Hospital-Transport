@@ -1,0 +1,22 @@
+=== OS ===
+Description:	Ubuntu 24.04.3 LTS
+
+=== CPU ===
+Model name:                           13th Gen Intel(R) Core(TM) i7-13620H
+Thread(s) per core:                   2
+Core(s) per socket:                   8
+Socket(s):                            1
+
+=== RAM ===
+MemTotal:       16224592 kB
+
+=== GPU ===
+NVIDIA GeForce RTX 4070 Laptop GPU, 8188 MiB
+
+=== PYTHON & LIBS ===
+Python: 3.11.14
+numpy: 1.24.3
+deap: 1.4
+networkx: 3.6
+pymoo: 0.6.1.6
+optuna: 4.6.0
