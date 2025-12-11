@@ -1,14 +1,15 @@
-\begin{table}[h]
+\begin{table}[h!]
 \centering
-\caption{Statistical Comparison of Algorithms (N=30)}
-\label{tab:stat_results}
-\begin{tabular}{lccccc}
+\begin{tabular}{|l|c|c|c|}
 \hline
-\textbf{Algorithm} & \textbf{Mean Cost} & \textbf{95\% CI} & \textbf{Std Dev} & \textbf{Best} & \textbf{Worst} \\
+Algorithm & Mean Clean Distance (95\% CI) & Best Observed & Stability (CV) \\
 \hline
-ES (μ+λ) & 1297.43 & $\pm$43.46 & 116.38 & 1104.66 & 1618.24 \\
-GA & 1315.86 & $\pm$60.19 & 161.18 & 1123.09 & 1692.49 \\
-Simulated Annealing & 2143.28 & $\pm$108.05 & 289.36 & 1668.14 & 2779.87 \\
+NSGA-II & 1133.9 $\pm$ 14.9 & 1070.0 & 3.6\% \\
+μ+λ & 1146.8 $\pm$ 15.0 & 1082.9 & 3.6\% \\
+GA & 1146.9 $\pm$ 15.0 & 1079.3 & 3.6\% \\
+SA & 1279.5 $\pm$ 30.4 & 1125.0 & 6.5\% \\
 \hline
 \end{tabular}
+\caption{Statistical comparison of clean distance fitness across 30 runs.}
+\label{tab:alg_comparison}
 \end{table}
