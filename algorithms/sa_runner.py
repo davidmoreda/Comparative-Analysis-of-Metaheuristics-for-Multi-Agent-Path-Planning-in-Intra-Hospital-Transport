@@ -281,6 +281,11 @@ def run_sa(
     clean_best_hist = []
     clean_curr_hist = []
     clean_std_hist  = []  # aquí 0 siempre, pero lo dejamos por compatibilidad
+    
+    # Historiales para la convergencia (métrica penalizada)
+    penalized_best_hist = []
+    penalized_curr_hist = []
+    penalized_std_hist = []
 
     # Schedule geométrico: T_k = start_temp * alpha^k
     if end_temp <= 0.0:
@@ -321,6 +326,11 @@ def run_sa(
         clean_best_hist.append(best_clean)
         clean_curr_hist.append(curr_clean)
         clean_std_hist.append(0.0)
+        
+        # Métrica penalizada
+        penalized_best_hist.append(best_cost)
+        penalized_curr_hist.append(curr_cost)
+        penalized_std_hist.append(0.0)
 
         # Debug periódicamente
         if debug_interval is not None and debug_interval > 0:
@@ -373,6 +383,9 @@ def run_sa(
         "clean_best": clean_best_hist,
         "clean_avg": clean_curr_hist,   # aquí 'avg' = solución actual
         "clean_std": clean_std_hist,
+        "penalized_best": penalized_best_hist,
+        "penalized_avg": penalized_curr_hist,
+        "penalized_std": penalized_std_hist,
         "time_sec": end_t - start_t
     }
 
@@ -390,18 +403,3 @@ if __name__ == "__main__":
         debug_interval=500
     )
 
-"""
-Top 3 mejores configuraciones:
-
-Params: {'n_iter': 12000, 'start_temp': 5, 'end_temp': 0.01}
-Score: 2170.2597637085464
-Time: 58.89351360003153
-
-Params: {'n_iter': 5000, 'start_temp': 20, 'end_temp': 0.01}
-Score: 2275.522967144143
-Time: 23.348228295644123
-
-Params: {'n_iter': 8000, 'start_temp': 10, 'end_temp': 0.01}
-Score: 2294.497834896004
-Time: 36.90306027730306
-"""

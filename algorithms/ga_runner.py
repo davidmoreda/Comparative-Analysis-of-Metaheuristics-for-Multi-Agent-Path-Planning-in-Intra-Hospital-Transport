@@ -311,6 +311,13 @@ def run_ga(
         "best_penalized": best_penalized,
         "best_clean": best_clean,
         "routes": best,
+        "clean_best": clean_best,
+        "clean_avg": clean_avg,
+        "clean_std": clean_std,
+        "penalized_best": penalized_best,
+        "penalized_avg": penalized_avg,
+        "penalized_std": penalized_std,
+        "time_sec": end_t - start_t
     }
 
 

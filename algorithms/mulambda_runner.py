@@ -218,6 +218,11 @@ def run_mulambda(
     clean_best = []
     clean_avg  = []
     clean_std  = []
+    
+    # Métricas penalizadas
+    penalized_best = []
+    penalized_avg  = []
+    penalized_std  = []
 
     start_t = time.time()
 
@@ -247,6 +252,12 @@ def run_mulambda(
         clean_best.append(np.min(clean_vals))
         clean_avg.append(np.mean(clean_vals))
         clean_std.append(np.std(clean_vals))
+        
+        # Métrica penalizada
+        penal_vals = [ind.fitness.values[0] for ind in pop]
+        penalized_best.append(np.min(penal_vals))
+        penalized_avg.append(np.mean(penal_vals))
+        penalized_std.append(np.std(penal_vals))
 
         # DEBUG LIMPIO
         if debug_interval is not None and debug_interval > 0:
@@ -298,6 +309,9 @@ def run_mulambda(
         "clean_best": clean_best,
         "clean_avg": clean_avg,
         "clean_std": clean_std,
+        "penalized_best": penalized_best,
+        "penalized_avg": penalized_avg,
+        "penalized_std": penalized_std,
         "time_sec": end_t - start_t
     }
 
@@ -315,18 +329,3 @@ if __name__ == "__main__":
         debug_interval=20
     )
 
-    """
-    Top 3 mejores configuraciones:
-
-Params: {'mu': 120, 'lambda_': 120, 'ngen': 800, 'cxpb': 0.5, 'mutpb': 0.5}
-Score: 1221.6603409845823
-Time: 307.0482934315999
-
-Params: {'mu': 120, 'lambda_': 120, 'ngen': 600, 'cxpb': 0.5, 'mutpb': 0.5}
-Score: 1224.269816692831
-Time: 294.4437708059947
-
-Params: {'mu': 120, 'lambda_': 50, 'ngen': 800, 'cxpb': 0.5, 'mutpb': 0.5}
-Score: 1226.8957907132838
-Time: 194.4581925868988
-    """

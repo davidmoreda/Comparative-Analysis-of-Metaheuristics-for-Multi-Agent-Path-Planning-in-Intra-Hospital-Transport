@@ -2,6 +2,7 @@ import time
 import random
 import numpy as np
 from deap import tools, algorithms
+from deap.benchmarks.tools import hypervolume
 
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -164,6 +165,15 @@ def run_ga_multi(
     logbook.record(gen=0, **record)
     #print(logbook.stream)
 
+    # Hypervolume history
+    # Reference point [Penalized, Clean] adjusted to safe max values
+    hv_ref_point = [20000.0, 20000.0]
+    hv_history = []
+    
+    # Calculate HV for initial population
+    hv = hypervolume(pop, hv_ref_point)
+    hv_history.append(hv)
+
     # ------------------------------------------------------
     # BUCLE PRINCIPAL NSGA-II
     # ------------------------------------------------------
@@ -188,6 +198,10 @@ def run_ga_multi(
         record = stats.compile(pop)
         logbook.record(gen=gen, **record)
         #print(logbook.stream)
+
+        # Calculate HV
+        hv = hypervolume(pop, hv_ref_point)
+        hv_history.append(hv)
 
         # --------------------------------------------------
         # DEBUG CADA X GENERACIONES (como en ga_runner)
@@ -301,7 +315,8 @@ def run_ga_multi(
         "best_clean": best_clean,
         "best_tradeoff": best_trade,
         "final_population": pop,
-        "logbook": logbook
+        "logbook": logbook,
+        "hv_history": hv_history
     }
 
 
@@ -321,51 +336,12 @@ if __name__ == "__main__":
         debug_interval=50 # solo al final
     )
 
-"""
-
-===== TOP CONFIGURACIONES POR HV =====
-pop=120, ngen=1000, cxpb=0.8, mutpb=0.3
-  HV medio = 15225585.80
-  Tiempo medio = 242.05s
-  Runs = 3
-
-pop=120, ngen=800, cxpb=0.8, mutpb=0.3
-  HV medio = 15205734.70
-  Tiempo medio = 193.62s
-  Runs = 3
-
-pop=100, ngen=1000, cxpb=0.8, mutpb=0.2
-  HV medio = 15184738.11
-  Tiempo medio = 245.08s
-  Runs = 3
-
-pop=120, ngen=1000, cxpb=0.6, mutpb=0.3
-  HV medio = 15161459.41
-  Tiempo medio = 293.68s
-  Runs = 3
-
-pop=120, ngen=800, cxpb=0.6, mutpb=0.3
-  HV medio = 15155115.40
-  Tiempo medio = 241.37s
-  Runs = 3
-
-
-===== MEJOR RUN INDIVIDUAL =====
-run_id=410
-pop=120, ngen=1000, cxpb=0.6, mutpb=0.2, seed=2
-HV=15446233.94, clean=1077.32, penal=1093.87
-conflicts=0, mindist=6.08, feasible=1
-time=198.72s
-
-"""
-
-
 # ==========================================================
 # RUNNER LIGERO PARA STREAMLIT
 # ==========================================================
 def run_ga_multi_streamlit(env, starts, picks, drops,
-                           pop_size=120, ngen=50,
-                           cxpb=0.6, mutpb=0.3, seed=0):
+                           pop_size=120, ngen=300,
+                           cxpb=0.6, mutpb=0.2, seed=0):
     """
     Versión ligera del GA para Streamlit.
     No muestra plots, no hace animación.
