@@ -337,18 +337,3 @@ if __name__ == "__main__":
         debug_interval=50,
         metric="penalized"
     )
-"""
-Top 3 mejores configuraciones:
-
-Params: {'pop_size': 120, 'ngen': 800, 'cxpb': 0.5, 'mutpb': 0.3}
-Score: 1225.0742178380299
-Time: 333.2616793314616
-
-Params: {'pop_size': 120, 'ngen': 600, 'cxpb': 0.5, 'mutpb': 0.3}
-Score: 1228.9693116294427
-Time: 249.944770971934
-
-Params: {'pop_size': 150, 'ngen': 800, 'cxpb': 0.8, 'mutpb': 0.3}
-Score: 1231.7622890254877
-Time: 266.8051021893819
-"""
