@@ -28,7 +28,7 @@ To reproduce the experiments, ensure you have **Python 3.8+** installed.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/GA-Hospital-Path-Planning.git
+   git clone https://github.com/your-username/Comparative-Analysis-of-Metaheuristics-for-Multi-Agent-Path-Planning-in-Intra-Hospital-Transport.git
    cd GA-Hospital-Path-Planning
    ```
 
