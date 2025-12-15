@@ -140,25 +140,7 @@ def detect_conflicts(routes):
                     conflicts.append(t)
     return conflicts, min_dist
 
-def mutate_conflict(route, G, conflicts):
-    if not conflicts or len(route) <= 3:
-        return route
-    t_conf = random.choice(conflicts)
-    t = min(t_conf, len(route)-2)
-    pivot = route[t]
-    neighbors = list(G.neighbors(pivot))
-    if not neighbors:
-        return route
-    sidestep = random.choice(neighbors)
-    mid = shortest(G, pivot, sidestep)
-    if mid is None:
-        return route
-    new = route[:t] + mid + route[t+1:]
-    if t > 0 and not G.has_edge(route[t-1], mid[0]):
-        return route
-    if t+1 < len(route) and not G.has_edge(mid[-1], route[t+1]):
-        return route
-    return new
+
 
 # ==============================================================
 # NEW MUTATIONS (MACRO, WAIT, SHIFT)
