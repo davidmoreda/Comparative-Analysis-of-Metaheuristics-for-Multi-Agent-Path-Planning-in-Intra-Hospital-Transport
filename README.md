@@ -1,4 +1,4 @@
-# GA-Based Multi-Agent Optimal Path Planning for Intra-Hospital Transport
+# Comparative Analysis of Metaheuristics for Multi-Agent Path Planning in Intra-Hospital Transport
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
