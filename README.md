@@ -11,12 +11,12 @@ We propose a robust **Evolutionary Computation (EC)** framework to solve the Mul
 ## 🚀 Key Features
 
 - **Realistic Environment**: Experiments conducted on a digitized floor plan of a real hospital facility.
-- **Multi-Objective Optimization**: Implementation of **NSGA-II** to balance operational efficiency (Travel Distance) against safety (Risk/Penalties).
-- **Algorithmic Benchmark**: Comprehensive comparison of standard optimization techniques:
+- **Algorithmic Benchmark (Single-Objective)**: Comprehensive comparison of standard optimization techniques minimizing pure cost:
   - Genetic Algorithm (**GA**)
   - Evolution Strategy (**μ+λ ES**)
   - Simulated Annealing (**SA**)
-  - **NSGA-II** (Multi-Objective)
+- **Multi-Objective Expansion**: Implementation of **NSGA-II** to address the complexity of balancing operational efficiency (Travel Distance) against safety (Risk/Penalties).
+  - *Note: The multi-objective approach explores a broader search space with different parameter configurations and follows the single-objective benchmark.*
 - **Conflict Management**: Advanced temporal conflict detection and penalty mechanisms for safe multi-agent coordination.
 
 ---
@@ -41,7 +41,14 @@ To reproduce the experiments, ensure you have **Python 3.8+** installed.
 
 ## 💻 Usage
 
-### 1. Running the Benchmark (Reproducibility)
+### 1. Interactive App (Antigravity App)
+Explore the results and visualize the path planning using the interactive Streamlit dashboard:
+
+```bash
+streamlit run app/antigravity_app.py
+```
+
+### 2. Running the Benchmark (Reproducibility)
 To generate the convergence plots and statistical comparisons presented in the paper, run the main Jupyter Notebook:
 
 ```bash
@@ -53,7 +60,7 @@ This notebook will:
 - Plot the convergence curves and Pareto fronts.
 - specific tables containing hyperparameter values and final metrics.
 
-### 2. Running Individual Algorithms
+### 3. Running Individual Algorithms
 You can run specific algorithms directly from the command line to see them in action. Parameters can be adjusted in the script or via arguments (if implemented).
 
 ```bash
@@ -108,25 +115,6 @@ Below is an example of conflict-free routes generated for 4 agents in the hospit
 ├── convergence.ipynb           # Main notebook for analysis and plotting
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation
-```
-
----
-
-## 📄 Citation
-
-If you use this code or methodology in your research, please cite our paper:
-
-```bibtex
-@article{dma_cgs_2025,
-  title={GA-Based Multi-Agent Optimal Path Planning for Intra-Hospital Transport},
-  author={Amezcua, David Moreda and Gutiérrez Silva, Carmen},
-  journal={IEEE Access},
-  year={2025},
-  volume={XX},
-  number={XX},
-  pages={XXXX-XXXX}
-}
-```
 
 ---
 
