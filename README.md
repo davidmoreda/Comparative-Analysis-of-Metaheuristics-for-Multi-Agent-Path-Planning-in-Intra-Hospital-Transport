@@ -115,9 +115,6 @@ Below is an example of conflict-free routes generated for 4 agents in the hospit
 ├── convergence.ipynb           # Main notebook for analysis and plotting
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation
-
----
 ```
 **Authors:** David Moreda Amezcua & Carmen Gutiérrez Silva
 ```
-
