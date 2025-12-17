@@ -117,5 +117,7 @@ Below is an example of conflict-free routes generated for 4 agents in the hospit
 └── README.md                   # Project documentation
 
 ---
-
+```
 **Authors:** David Moreda Amezcua & Carmen Gutiérrez Silva
+```
+
